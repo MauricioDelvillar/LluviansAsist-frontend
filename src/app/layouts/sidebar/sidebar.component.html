@@ -1,0 +1,43 @@
+<nav class="bg-gray-800 text-white h-screen flex flex-col p-4 transition-all duration-300" [ngClass]="{'w-16': isCollapsed, 'w-64': !isCollapsed}">
+  <!-- Botón para Colapsar/Expandir el Sidebar -->
+  <button class="self-end text-xl mb-4" (click)="toggleSidebar()">☰</button>
+  
+  <!-- Lista de Opciones de Navegación -->
+  <ul class="flex flex-col space-y-4">
+    <!-- Solo visible para el rol 'admin' -->
+    <li *ngIf="userRole === 'admin'">
+      <a routerLink="/inicio" routerLinkActive="font-bold" class="flex items-center space-x-4">
+        <span class="text-2xl">🏠</span>
+        <span class="text-base" *ngIf="!isCollapsed">Inicio</span>
+      </a>
+    </li>
+    
+    <!-- Solo visible para el rol 'trainer' -->
+    <li *ngIf="userRole === 'trainer'">
+      <a routerLink="/configuracion" routerLinkActive="font-bold" class="flex items-center space-x-4">
+        <span class="text-2xl">⚙️</span>
+        <span class="text-base" *ngIf="!isCollapsed">Horarios</span>
+      </a>
+    </li>
+    <li *ngIf="userRole === 'trainer'">
+      <a routerLink="/configuracion" routerLinkActive="font-bold" class="flex items-center space-x-4">
+        <span class="text-2xl">⚙️</span>
+        <span class="text-base" *ngIf="!isCollapsed">Cuenta</span>
+      </a>
+    </li>
+    
+    <!-- Solo visible para el rol 'user' -->
+    <li *ngIf="userRole === 'user'">
+      <a routerLink="/perfil" routerLinkActive="font-bold" class="flex items-center space-x-4">
+        <span class="text-2xl">👤</span>
+        <span class="text-base" *ngIf="!isCollapsed">Horarios</span>
+      </a>
+    </li>
+    <li *ngIf="userRole === 'trainer'">
+      <a routerLink="/configuracion" routerLinkActive="font-bold" class="flex items-center space-x-4">
+        <span class="text-2xl">⚙️</span>
+        <span class="text-base" *ngIf="!isCollapsed">Cuenta</span>
+      </a>
+    </li>
+  </ul>
+</nav>

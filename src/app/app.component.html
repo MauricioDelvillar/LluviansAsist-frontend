@@ -1,0 +1,6 @@
+<div class="flex h-screen">
+  <app-sidebar></app-sidebar>
+  <div [ngClass]="{'ml-16': isSidebarCollapsed, 'ml-64': !isSidebarCollapsed}" class="transition-all duration-300 w-full">
+    <router-outlet></router-outlet>
+  </div>
+</div>
